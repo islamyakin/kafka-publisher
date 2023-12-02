@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func sendLogLines(logFile string, producer *kafka.Producer, topic string) error{
+func sendLogLines(logFile string, producer *kafka.Producer, topic string) error {
 	file, err := os.Open(logFile)
 	if err != nil {
 		log.Fatalf("Failed to open log file: %s", err)
@@ -37,5 +37,5 @@ func sendLogLines(logFile string, producer *kafka.Producer, topic string) error{
 
 	// Tunggu pengiriman pesan selesai
 	producer.Flush(15 * 1000)
-return nil
+	return nil
 }
