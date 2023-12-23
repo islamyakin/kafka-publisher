@@ -8,16 +8,16 @@ import (
 	"os"
 )
 
-func loadEnv () error {
+func loadEnv() error {
 	return godotenv.Load()
 }
 func getEnvVars() (string, string) {
 	return os.Getenv("LOG_FILE"), os.Getenv("KAFKA_TOPIC")
 }
 
-func createKafkaProducer(topic string)(*kafka.Producer, error){
+func createKafkaProducer(topic string) (*kafka.Producer, error) {
 	producer, err := kafka.NewProducer(&kafka.ConfigMap{
-		"bootstrap.servers": os.Getenv("KAFKA_BROKERS"),
+		"bootstrap.servers":  os.Getenv("KAFKA_BROKERS"),
 		"enable.idempotence": os.Getenv("KAFKA_IDEMPOTENCE"),
 	})
 	if err != nil {
